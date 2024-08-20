@@ -1,12 +1,10 @@
-import "./App.css";
+import { Container } from "./App.style";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <h1>Fruityvice</h1>
-      </header>
-    </div>
+    <Container>
+      <h1>Fruityvice</h1>
+    </Container>
   );
 }
 
