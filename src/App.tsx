@@ -8,11 +8,8 @@ function App() {
 
       <Routes>
         <Route path="/" element={<div>RandomFruit component</div>} />
-        <Route path="/allfruits" element={<div>FruitList component</div>} />
-        <Route
-          path="/allfruits/:idFruit"
-          element={<div>FruitDetail component</div>}
-        />
+        <Route path="/fruits" element={<div>FruitList component</div>} />
+        <Route path="/fruits/:id" element={<div>FruitDetail component</div>} />
       </Routes>
     </Container>
   );
