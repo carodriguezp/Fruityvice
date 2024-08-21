@@ -11,3 +11,5 @@ test("renders title", () => {
   const titleElement = screen.getByText("Fruityvice");
   expect(titleElement).toBeInTheDocument();
 });
+
+//As we are using React Router App was wrapped into HashRouter, so the test must do the same
