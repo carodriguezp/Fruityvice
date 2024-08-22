@@ -1,20 +1,20 @@
-type Nutritions = {
+type Fruit = {
 
     name: string,
     id: number,
     family: string,
     order: string,
     genus: string,
+    nutritions: Nutritions
 
 }
 
-type Fruit = {
+type Nutritions = {
     calories: number,
     fat: number,
     sugar: number,
     carbohydrates: number,
     protein: number,
-    nutritions: Nutritions
 }
 
 export type { Nutritions, Fruit }
