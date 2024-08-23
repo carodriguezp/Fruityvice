@@ -18,7 +18,6 @@ const getDataFromApi = async (): Promise<APIResponse> => { //Promise is built in
         return data
 
     } catch (error) {
-        console.log(error)
         throw new Error("There was an error on request or process data") //new Error(): Explicitly creates a new instance of Error, providing greater clarity and adherence to standard JavaScript conventions.
     }
 

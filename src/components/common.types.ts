@@ -1,12 +1,10 @@
 type Fruit = {
-
     name: string,
     id: number,
     family: string,
     order: string,
     genus: string,
     nutritions: Nutritions
-
 }
 
 type Nutritions = {
