@@ -1,4 +1,4 @@
-import type { Nutritions, Fruit } from '../components/common.types'
+import type { Fruit } from '../components/common.types'
 import axios from 'axios';
 
 //response from API is and array of objects so we need to specify its type.
@@ -14,8 +14,8 @@ const fruitByIdURL = (id: number) => `https://proxyserver-phi.vercel.app/showd/$
 const getDataFromApi = async (): Promise<APIResponse> => { //Promise is built in Typescript
 
     try {
-        const response: APIResponse = await axios.get(fruitsURL); //axios.get() starts a request and returns a promise
-        return response
+        const { data } = await axios.get<APIResponse>(fruitsURL); //axios.get() starts a request and returns a promise
+        return data
 
     } catch (error) {
         console.log(error)
