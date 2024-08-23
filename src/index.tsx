@@ -5,6 +5,11 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { HashRouter } from "react-router-dom";
 
+<script
+  src="https://unpkg.com/react/umd/react.production.min.js"
+  crossOrigin="anonymous"
+></script>;
+
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
 );
