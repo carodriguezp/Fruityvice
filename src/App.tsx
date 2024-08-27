@@ -1,15 +1,32 @@
 import { Route, Routes } from "react-router-dom";
 import { Container } from "./App.style";
+import "bootstrap/dist/css/bootstrap.min.css";
+import Header from "./components/header/Header";
+
+export const routesPath = {
+  base: "/",
+  fruits: "/fruits",
+  fruitsId: "/fruits/:id",
+};
 
 function App() {
   return (
     <Container>
-      <h1>Fruityvice</h1>
+      <Header />
 
       <Routes>
-        <Route path="/" element={<div>RandomFruit component</div>} />
-        <Route path="/fruits" element={<div>FruitList component </div>} />
-        <Route path="/fruits/:id" element={<div>FruitDetail component</div>} />
+        <Route
+          path={routesPath.base}
+          element={<div>RandomFruit component</div>}
+        />
+        <Route
+          path={routesPath.fruits}
+          element={<div>FruitList component </div>}
+        />
+        <Route
+          path={routesPath.fruitsId}
+          element={<div>FruitDetail component</div>}
+        />
       </Routes>
     </Container>
   );
