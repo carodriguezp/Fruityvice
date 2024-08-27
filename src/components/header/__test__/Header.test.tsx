@@ -1,4 +1,3 @@
-// describe("",()=>{})
 import "@testing-library/jest-dom";
 import { render, screen } from "@testing-library/react";
 import Header from "../Header";
@@ -25,15 +24,10 @@ describe("Navigation links", () => {
       </HashRouter>
     );
 
-    //como tienen textos identificativos no hace falta test id
-    //que cada link tenga el atributo href y ahi tenga la ruta suya
-
     const linkDiscover = screen.getByText("Discover Fruit");
     expect(linkDiscover).toHaveAttribute("href", "#/");
 
     const linkAllFruits = screen.getByText("All Fruits");
     expect(linkAllFruits).toHaveAttribute("href", "#/fruits");
   });
-
-  //que se vean los links y que tengan el href correspondiente
 });
