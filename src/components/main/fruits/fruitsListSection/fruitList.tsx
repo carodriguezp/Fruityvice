@@ -5,6 +5,10 @@ import { APIResponse, getDataFromApi } from "../../../../services/api";
 import { Link } from "react-router-dom";
 import { Fruit } from "../../../common.types";
 
+import "bootstrap/dist/css/bootstrap.min.css";
+import { ListGroupItem } from "react-bootstrap";
+import { GeneralListStyled } from "../../../../App.style";
+
 function FruitList() {
   const [fruitsList, setFruitsList] = useState<APIResponse>([]);
 
@@ -22,29 +26,23 @@ function FruitList() {
   }, []);
 
   return (
-    <div>
-      <h2>LISTA DE FRUTAS</h2>
-      <div>FruitList component </div>
-      <ul>
-        {fruitsList.length > 0 ? (
-          fruitsList.map((fruit: Fruit) => (
-            <li key={fruit.id}>
-              <Link to={routesPath.fruitsId}>
-                <article>
-                  <h3>Name: {fruit.name}</h3>
-                  <p>
-                    <b>Family: </b>
-                    {fruit.family}
-                  </p>
-                </article>
-              </Link>
-            </li>
-          ))
-        ) : (
-          <p>No fruits available.</p>
-        )}
-      </ul>
-    </div>
+    <GeneralListStyled className="general-list">
+      {fruitsList.length > 0 ? (
+        fruitsList.map((fruit: Fruit) => (
+          <ListGroupItem className="element-list" key={fruit.id}>
+            <Link to={routesPath.fruitsId} key={fruit.id}>
+              <h2> {fruit.name} </h2>
+              {/* <h3>
+                <b>Family: </b>
+                {fruit.family}
+              </h3> */}
+            </Link>
+          </ListGroupItem>
+        ))
+      ) : (
+        <p>No fruits available.</p>
+      )}
+    </GeneralListStyled>
   );
 }
 
