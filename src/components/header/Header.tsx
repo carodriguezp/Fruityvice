@@ -23,7 +23,7 @@ export default function Header() {
           </div>
           <div className="collapse navbar-collapse header-styled" id="myNavbar">
             <ul className="nav navbar-nav">
-              <li className="active">
+              <li className="active ">
                 <Link to={routesPath.base}>Discover Fruit</Link>
               </li>
               <li className="active">

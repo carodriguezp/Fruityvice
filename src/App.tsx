@@ -4,7 +4,7 @@ import { Container } from "./App.style";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 import Header from "./components/header/Header";
-import FruitList from "./components/main/fruits/fruitsListSection/fruitList";
+import FruitList from "./components/main/fruits/fruitsListSection/FruitList";
 
 export const routesPath = {
   base: "/",

@@ -7,7 +7,11 @@ import { Fruit } from "../../../common.types";
 
 import "bootstrap/dist/css/bootstrap.min.css";
 import { ListGroupItem } from "react-bootstrap";
-import { GeneralListStyled } from "../../../../App.style";
+import {
+  GeneralListStyled,
+  ListGroupItemStyled,
+  StyledLink,
+} from "../../../../App.style";
 
 function FruitList() {
   const [fruitsList, setFruitsList] = useState<APIResponse>([]);
@@ -29,15 +33,11 @@ function FruitList() {
     <GeneralListStyled className="general-list">
       {fruitsList.length > 0 ? (
         fruitsList.map((fruit: Fruit) => (
-          <ListGroupItem className="element-list" key={fruit.id}>
-            <Link to={routesPath.fruitsId} key={fruit.id}>
+          <ListGroupItemStyled key={fruit.id}>
+            <StyledLink to={routesPath.fruitsId} key={fruit.id}>
               <h2> {fruit.name} </h2>
-              {/* <h3>
-                <b>Family: </b>
-                {fruit.family}
-              </h3> */}
-            </Link>
-          </ListGroupItem>
+            </StyledLink>
+          </ListGroupItemStyled>
         ))
       ) : (
         <p>No fruits available.</p>
