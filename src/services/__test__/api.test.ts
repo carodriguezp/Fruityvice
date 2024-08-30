@@ -37,7 +37,7 @@ describe('api services', () => {
 
     })
 
-    describe.only("getDataByIdFromApi", () => {
+    describe("getDataByIdFromApi", () => {
         //HAPPY PATH
         describe("when succesful", () => {
 
