@@ -1,12 +1,8 @@
 import { useEffect, useState } from "react";
 import { routesPath } from "../../../../App";
 import { APIResponse, getDataFromApi } from "../../../../services/api";
-
-import { Link } from "react-router-dom";
 import { Fruit } from "../../../common.types";
-
 import "bootstrap/dist/css/bootstrap.min.css";
-import { ListGroupItem } from "react-bootstrap";
 import {
   GeneralListStyled,
   ListGroupItemStyled,
@@ -30,7 +26,7 @@ function FruitList() {
   }, []);
 
   return (
-    <GeneralListStyled className="general-list">
+    <GeneralListStyled className="general-list" data-testid="list-of-fruits">
       {fruitsList.length > 0 ? (
         fruitsList.map((fruit: Fruit) => (
           <ListGroupItemStyled key={fruit.id}>
@@ -40,7 +36,7 @@ function FruitList() {
           </ListGroupItemStyled>
         ))
       ) : (
-        <p>No fruits available.</p>
+        <p data-testid="error-message">No fruits available.</p>
       )}
     </GeneralListStyled>
   );
