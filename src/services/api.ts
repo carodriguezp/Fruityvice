@@ -4,7 +4,7 @@ import axios from 'axios';
 //response from API is and array of objects so we need to specify its type.
 //Due to Fruit is and object, APIResponse would be Array<Fruit>.
 
-type APIResponse = Array<Fruit>;
+export type APIResponse = Array<Fruit>;
 
 
 const fruitsURL = "https://proxyserver-phi.vercel.app"

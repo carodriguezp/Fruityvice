@@ -1,7 +1,7 @@
 import "@testing-library/jest-dom";
 import { render, screen } from "@testing-library/react";
 import Header from "../Header";
-import { HashRouter, Link } from "react-router-dom";
+import { HashRouter } from "react-router-dom";
 
 describe("Header", () => {
   it("renders aplication title", () => {
