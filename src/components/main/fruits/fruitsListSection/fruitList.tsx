@@ -1,6 +1,5 @@
-import { useEffect, useState } from "react";
 import { routesPath } from "../../../../App";
-import { APIResponse, getDataFromApi } from "../../../../services/api";
+import { APIResponse } from "../../../../services/api";
 import { Fruit } from "../../../common.types";
 import "bootstrap/dist/css/bootstrap.min.css";
 import {
@@ -9,21 +8,21 @@ import {
   StyledLink,
 } from "../../../../App.style";
 
-function FruitList() {
-  const [fruitsList, setFruitsList] = useState<APIResponse>([]);
+function FruitList({ fruitsList }: { fruitsList: APIResponse }) {
+  // const [fruitsList, setFruitsList] = useState<APIResponse>([]);
 
-  const fetchFruits = async () => {
-    try {
-      const allFruits = await getDataFromApi();
-      setFruitsList(allFruits);
-    } catch (error) {
-      console.error("Sorry, there was an error.", error);
-    }
-  };
+  // const fetchFruits = async () => {
+  //   try {
+  //     const allFruits = await getDataFromApi();
+  //     setFruitsList(allFruits);
+  //   } catch (error) {
+  //     console.error("Sorry, there was an error.", error);
+  //   }
+  // };
 
-  useEffect(() => {
-    fetchFruits();
-  }, []);
+  // useEffect(() => {
+  //   fetchFruits();
+  // }, []);
 
   return (
     <GeneralListStyled className="general-list" data-testid="list-of-fruits">
