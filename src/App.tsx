@@ -4,7 +4,7 @@ import { Container } from "./App.style";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 import Header from "./components/header/Header";
-import FruitList from "./components/main/fruits/fruitsListSection/FruitList";
+import FruitListContainer from "./components/main/fruits/fruitsListSection/FruitListContainer";
 
 export const routesPath = {
   base: "/",
@@ -22,7 +22,7 @@ function App() {
           path={routesPath.base}
           element={<div>RandomFruit component</div>}
         />
-        <Route path={routesPath.fruits} element={<FruitList />} />
+        <Route path={routesPath.fruits} element={<FruitListContainer />} />
         <Route
           path={routesPath.fruitsId}
           element={<div>FruitDetail component</div>}
