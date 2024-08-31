@@ -1,5 +1,3 @@
-//describe("",()=>{})
-
 import * as myService from "../../../../../services/api";
 import { mockFruitListFromApi } from "../../../../mocks";
 import FruitList from "../FruitList";
@@ -10,7 +8,7 @@ import "@testing-library/jest-dom";
 jest.mock("../../../../../services/api"); //route to be mocked
 
 describe("FruitList section calls API services", () => {
-  describe.only("when succesfull", () => {
+  describe("when succesfull", () => {
     beforeEach(() => {
       jest
         .spyOn(myService, "getDataFromApi")
@@ -19,7 +17,6 @@ describe("FruitList section calls API services", () => {
 
     it("renders FruitList section", async () => {
       render(<FruitList />);
-      //screen.debug();
 
       const list = screen.getByTestId("list-of-fruits");
       expect(list).toBeInTheDocument();
@@ -31,16 +28,12 @@ describe("FruitList section calls API services", () => {
       jest.spyOn(myService, "getDataFromApi").mockResolvedValue([]);
     });
 
-    it("thows an error", async () => {
+    it("throws an error", async () => {
       render(<FruitList />);
-
-      // const errorMessage = screen.getByTestId("error-message");
 
       const errorMessage = await screen.findByTestId("error-message");
 
       expect(errorMessage).toBeInTheDocument();
-
-      //screen.debug();
     });
   });
 });

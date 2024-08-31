@@ -5,7 +5,6 @@ import { ListGroupItem } from 'react-bootstrap';
 
 const fontColor = "#337AB7";
 
-
 export const Container = styled.div`
 
  background-image:url(${image});
@@ -23,7 +22,6 @@ export const Container = styled.div`
 }
 `;
 
-
 export const HeaderStyled = styled.div`
     top: 10px;
     position: relative;  
@@ -33,8 +31,6 @@ export const HeaderStyled = styled.div`
     align-items: center;
 
 `;
-
-
 
 export const GeneralListStyled = styled.div`
   width: 90vw;
@@ -82,7 +78,6 @@ export const ListGroupItemStyled = styled(ListGroupItem)`
       &:hover {
         transform: scale(1.3);
         transition: transform 0.8s;
-
 }
     }
 `
@@ -90,9 +85,6 @@ export const ListGroupItemStyled = styled(ListGroupItem)`
 export const StyledLink = styled(Link)`
 text-decoration: none;
 &:hover {
-        
         text-decoration: none;
-       
-
 }
 `
