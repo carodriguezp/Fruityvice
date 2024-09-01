@@ -9,21 +9,6 @@ import {
 } from "../../../../App.style";
 
 function FruitList({ fruitsList }: { fruitsList: APIResponse }) {
-  // const [fruitsList, setFruitsList] = useState<APIResponse>([]);
-
-  // const fetchFruits = async () => {
-  //   try {
-  //     const allFruits = await getDataFromApi();
-  //     setFruitsList(allFruits);
-  //   } catch (error) {
-  //     console.error("Sorry, there was an error.", error);
-  //   }
-  // };
-
-  // useEffect(() => {
-  //   fetchFruits();
-  // }, []);
-
   return (
     <GeneralListStyled className="general-list" data-testid="list-of-fruits">
       {fruitsList.length > 0 ? (

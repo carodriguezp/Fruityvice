@@ -5,8 +5,8 @@ import { render, screen } from "@testing-library/react";
 import "@testing-library/jest-dom";
 import { HashRouter } from "react-router-dom";
 
-describe("FruitList section calls API services", () => {
-  describe("when succesfull", () => {
+describe("FruitList section", () => {
+  describe("when data is not empty", () => {
     it("renders FruitList section", async () => {
       render(
         <HashRouter>
@@ -19,7 +19,7 @@ describe("FruitList section calls API services", () => {
     });
   });
 
-  describe("when not succesfull", () => {
+  describe("when data is empty", () => {
     it("throws an error", async () => {
       render(<FruitList fruitsList={[]} />);
 
