@@ -1,9 +1,9 @@
 import * as myService from "../../../../../services/api";
 import { mockFruitListFromApi } from "../../../../mocks";
-import FruitList from "../FruitList";
 import { render, screen } from "@testing-library/react";
 
 import "@testing-library/jest-dom";
+import FruitListContainer from "../FruitListContainer";
 
 jest.mock("../../../../../services/api"); //route to be mocked
 
@@ -16,7 +16,7 @@ describe("FruitList section calls API services", () => {
     });
 
     it("renders FruitList section", async () => {
-      render(<FruitList />);
+      render(<FruitListContainer />);
 
       const list = screen.getByTestId("list-of-fruits");
       expect(list).toBeInTheDocument();
@@ -29,7 +29,7 @@ describe("FruitList section calls API services", () => {
     });
 
     it("throws an error", async () => {
-      render(<FruitList />);
+      render(<FruitListContainer />);
 
       const errorMessage = await screen.findByTestId("error-message");
 
