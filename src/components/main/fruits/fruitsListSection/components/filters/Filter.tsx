@@ -1,19 +1,17 @@
-import React from "react";
+import Button from "react-bootstrap/esm/Button";
+import FormControl from "react-bootstrap/esm/FormControl";
+import FormLabel from "react-bootstrap/esm/FormLabel";
+import { StyledForm, StyledFormGroup } from "../../../../../../App.style";
 
 function Filter() {
   return (
-    <div>FILTER</div>
-    //     <Form inline>
-    //   <FormGroup controlId="formInlineName">
-    //     <ControlLabel>Name</ControlLabel>{' '}
-    //     <FormControl type="text" placeholder="Jane Doe" />
-    //   </FormGroup>{' '}
-    //   <FormGroup controlId="formInlineEmail">
-    //     <ControlLabel>Email</ControlLabel>{' '}
-    //     <FormControl type="email" placeholder="jane.doe@example.com" />
-    //   </FormGroup>{' '}
-    //   <Button type="submit">Send invitation</Button>
-    // </Form>;
+    <StyledForm>
+      <StyledFormGroup controlId="formInlineName">
+        <FormLabel>Name</FormLabel>{" "}
+        <FormControl type="text" placeholder="Strawberry" />
+      </StyledFormGroup>{" "}
+      <Button type="submit">Find fruit</Button>
+    </StyledForm>
   );
 }
 
