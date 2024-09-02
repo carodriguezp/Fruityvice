@@ -1,31 +1,30 @@
-import FormControl from "react-bootstrap/esm/FormControl";
-import FormLabel from "react-bootstrap/esm/FormLabel";
+import FormControl from "react-bootstrap/FormControl";
+import FormLabel from "react-bootstrap/FormLabel";
 import { StyledForm, StyledFormGroup } from "../../../../../../App.style";
+import { useEffect, useState } from "react";
 
-function Filter(props: {
-  filterFruit: string;
-  handleFilterFruit: (x: string) => void;
-  hasFiltered: boolean;
-}) {
-  const { filterFruit, handleFilterFruit, hasFiltered } = props;
+function Filter(props: { handleFilterFruit: (x: string) => void }) {
+  const { handleFilterFruit } = props;
+
+  const [value, setValue] = useState(""); //es filterfruits
+
+  useEffect(() => {
+    handleFilterFruit(value);
+  }, [handleFilterFruit, value]);
 
   return (
     <StyledForm>
       <StyledFormGroup>
         <FormLabel>Name</FormLabel>{" "}
         <FormControl
+          data-testid="input"
           type="text"
           placeholder="Strawberry"
-          value={filterFruit}
-          onChange={(ev) => handleFilterFruit(ev.target.value)}
+          value={value}
+          onChange={(ev) => setValue(ev.target.value)}
         />
         <FormControl.Feedback />
       </StyledFormGroup>{" "}
-      {!hasFiltered && filterFruit && (
-        <p data-testid="error-message">
-          There is no fruit matching "{filterFruit}"
-        </p>
-      )}
     </StyledForm>
   );
 }

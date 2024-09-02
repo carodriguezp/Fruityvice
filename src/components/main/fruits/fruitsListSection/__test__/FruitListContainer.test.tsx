@@ -7,6 +7,8 @@ import FruitListContainer from "../FruitListContainer";
 
 jest.mock("../../../../../services/api"); //route to be mocked
 
+////////////FROM FRUIT LIST COMPONENT ////////////////
+
 describe("FruitList section calls API services", () => {
   describe("when succesfull", () => {
     beforeEach(() => {

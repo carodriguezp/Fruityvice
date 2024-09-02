@@ -6,6 +6,7 @@ import { APIResponse, getDataFromApi } from "../../../../services/api";
 function FruitListContainer() {
   const [fruitsList, setFruitsList] = useState<APIResponse>([]);
   const [filterFruit, setFilterFruit] = useState("");
+  const [messageError, setMessageError] = useState("");
 
   const fetchFruits = async () => {
     try {
@@ -26,19 +27,13 @@ function FruitListContainer() {
       return fruit.name.toLowerCase().includes(filterFruit.toLowerCase());
     });
 
-  const hasFiltered = !!filteredFruits?.length;
-
   useEffect(() => {
     fetchFruits();
   }, []);
 
   return (
     <>
-      <Filter
-        filterFruit={filterFruit}
-        handleFilterFruit={handleFilterFruit}
-        hasFiltered={hasFiltered}
-      />
+      <Filter handleFilterFruit={handleFilterFruit} />
       <FruitList fruitsList={filteredFruits} />
     </>
   );
