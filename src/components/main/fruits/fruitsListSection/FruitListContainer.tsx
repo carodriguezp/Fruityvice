@@ -6,7 +6,6 @@ import { APIResponse, getDataFromApi } from "../../../../services/api";
 function FruitListContainer() {
   const [fruitsList, setFruitsList] = useState<APIResponse>([]);
   const [filterFruit, setFilterFruit] = useState("");
-  const [messageError, setMessageError] = useState("");
 
   const fetchFruits = async () => {
     try {

@@ -6,8 +6,7 @@ import { useEffect, useState } from "react";
 function Filter(props: { handleFilterFruit: (x: string) => void }) {
   const { handleFilterFruit } = props;
 
-  const [value, setValue] = useState(""); //es filterfruits
-
+  const [value, setValue] = useState("");
   useEffect(() => {
     handleFilterFruit(value);
   }, [handleFilterFruit, value]);
@@ -23,7 +22,6 @@ function Filter(props: { handleFilterFruit: (x: string) => void }) {
           value={value}
           onChange={(ev) => setValue(ev.target.value)}
         />
-        <FormControl.Feedback />
       </StyledFormGroup>{" "}
     </StyledForm>
   );
