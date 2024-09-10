@@ -3,11 +3,12 @@ import image from './pattern.png'
 import { Link } from "react-router-dom";
 import { Form, FormGroup, ListGroupItem } from 'react-bootstrap';
 
-const fontColor = "#337AB7";
+const fontColorBlue = "#337AB7";
+const fontColorOrange = "#ed4444c2"
 
 export const Container = styled.div`
 
- background-image:url(${image});
+  background-image:url(${image});
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -18,14 +19,14 @@ export const Container = styled.div`
   
   .header {
    top:0;
-    position: absolute;  
+   position: absolute;  
 }
 `;
 
 export const HeaderStyled = styled.div`
     top: 10px;
     position: relative;  
-    width: 100vw;
+    width: 95vw;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -73,7 +74,7 @@ export const ListGroupItemStyled = styled(ListGroupItem)`
     h2{
       font-size: 1.6rem;
       font-weight: bold;
-      color: ${fontColor};
+      color: ${fontColorBlue};
      
       &:hover {
         transform: scale(1.3);
@@ -112,4 +113,73 @@ export const StyledFormGroup = styled(FormGroup)`
     gap: 20px;
     color: white;
 `
+export const StyledDetail = styled.div`
+    position: relative;
+    top: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    padding: 10px;
+    background: rgba(219, 212, 60, 0.76);
+    
 
+b{
+  color: ${fontColorOrange};
+} 
+
+    h1{
+      font-size: 2rem;
+      font-weight: bold;
+      color: ${fontColorOrange};
+    }
+
+    h2{
+      font-size: 1.6rem;
+      font-weight: bold;
+      color: ${fontColorBlue};      
+    }
+    
+    @media all and (min-width: 768px) {
+      top: 80px;
+      width: 90vw;
+      flex-direction: row;
+      justify-content: center;
+
+      div{
+        display: flex;
+        flex-direction: column;
+        width: 90vw;
+        padding-left: 20px;
+      }
+  } 
+
+  @media all and (min-width: 1024px) {
+    width: 80vw;
+    h1{
+      font-size: 3rem;
+      
+    }
+
+    h2{
+      font-size: 2rem;
+      
+    }
+  } 
+`
+
+export const StyledTable = styled.table`
+  background: ${fontColorOrange};
+
+  th{
+    text-align: center;
+  }
+
+  td{
+    font-size: 1.6rem;
+  }
+
+  @media all and (min-width: 768px) {
+    margin: 15px;
+  }
+`
