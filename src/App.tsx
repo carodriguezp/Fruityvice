@@ -5,6 +5,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 
 import Header from "./components/header/Header";
 import FruitListContainer from "./components/main/fruits/fruitsListSection/FruitListContainer";
+import FruitDetail from "./components/main/fruits/fruitDetailSection/FruitDetail";
 
 export const routesPath = {
   base: "/",
@@ -23,10 +24,7 @@ function App() {
           element={<div>RandomFruit component</div>}
         />
         <Route path={routesPath.fruits} element={<FruitListContainer />} />
-        <Route
-          path={routesPath.fruitsId}
-          element={<div>FruitDetail component</div>}
-        />
+        <Route path={routesPath.fruitsId} element={<FruitDetail />} />
       </Routes>
     </Container>
   );
