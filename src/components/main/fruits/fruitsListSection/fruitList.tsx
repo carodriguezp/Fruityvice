@@ -13,7 +13,10 @@ function FruitList({ fruitsList }: { fruitsList: APIResponse }) {
     <GeneralListStyled className="general-list" data-testid="list-of-fruits">
       {fruitsList.length > 0 ? (
         fruitsList.map((fruit: Fruit) => (
-          <ListGroupItemStyled key={fruit.id}>
+          <ListGroupItemStyled
+            key={fruit.id}
+            data-testid={fruit.name.toLowerCase()}
+          >
             <StyledLink to={routesPath.fruitsId} key={fruit.id}>
               <h2> {fruit.name} </h2>
             </StyledLink>

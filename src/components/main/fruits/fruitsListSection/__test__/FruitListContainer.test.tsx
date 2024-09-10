@@ -1,85 +1,92 @@
 import * as myService from "../../../../../services/api";
 import { mockFruitListFromApi } from "../../../../mocks";
-import { render, screen } from "@testing-library/react";
+import { fireEvent, render, screen, waitFor } from "@testing-library/react";
 
 import "@testing-library/jest-dom";
 import FruitListContainer from "../FruitListContainer";
+import userEvent from "@testing-library/user-event";
 import { HashRouter } from "react-router-dom";
-import FruitList from "../FruitList";
+import { act } from "react";
+import { toBeInTheDocument } from "@testing-library/jest-dom/types/matchers";
 
 jest.mock("../../../../../services/api"); //route to be mocked
+
+//describe("", () => {})
 
 ////////////FROM FILTER COMPONENT ////////////////
 
 describe("Filter section calls API services", () => {
   describe("When input from user is received", () => {
-    beforeEach(() => {
-      jest
-        .spyOn(myService, "getDataFromApi")
-        .mockResolvedValue(mockFruitListFromApi);
-    });
-
-    it("should filter fruits by name correctly and displays items that match user's search", async () => {
-      render(
-        <HashRouter>
-          <FruitList fruitsList={mockFruitListFromApi} />
-        </HashRouter>
-      );
-
-      const userInput = "piña";
-
-      const filteredFruits = mockFruitListFromApi.filter((fruit) => {
-        return fruit.name.toLowerCase().includes(userInput.toLowerCase());
+    describe("When succesfull finding data", () => {
+      beforeEach(() => {
+        jest
+          .spyOn(myService, "getDataFromApi")
+          .mockResolvedValue(mockFruitListFromApi);
       });
 
-      expect(filteredFruits).toEqual([
-        {
-          name: "Piña",
-          id: 1,
-          family: "Bromeliaceae",
-          order: "Poales",
-          genus: "Ananas",
-          nutritions: {
-            calories: 50,
-            fat: 0.12,
-            sugar: 9.85,
-            carbohydrates: 13.12,
-            protein: 0.54,
-          },
-        },
-      ]);
-    });
+      it("displays items that match user's search", async () => {
+        render(
+          <HashRouter>
+            <FruitListContainer />
+          </HashRouter>
+        );
 
-    it("should return all fruits if filter is an empty string", () => {
-      render(
-        <HashRouter>
-          <FruitList fruitsList={mockFruitListFromApi} />
-        </HashRouter>
-      );
+        const userSearch = "higo";
+        const input = screen.getByTestId("input");
+        let foundFruit;
 
-      const userInput = "";
+        // eslint-disable-next-line testing-library/no-unnecessary-act
+        act(() => {
+          userEvent.type(input, userSearch); //.type simulates user typing--needs 2 arguments (an element and a text)
+        });
+        await waitFor(() => {
+          foundFruit = screen.getByTestId(userSearch);
+        });
 
-      const filteredFruits = mockFruitListFromApi.filter((fruit) => {
-        return fruit.name.toLowerCase().includes(userInput.toLowerCase());
+        //screen.debug();
+        expect(foundFruit).toBeInTheDocument();
+        expect(
+          screen.queryByTestId(mockFruitListFromApi[0].name.toLocaleLowerCase())
+        ).not.toBeInTheDocument();
       });
 
-      expect(filteredFruits).toEqual(mockFruitListFromApi);
-    });
+      describe("When unsuccesfull finding data", () => {
+        beforeEach(() => {
+          jest
+            .spyOn(myService, "getDataFromApi")
+            .mockResolvedValue(mockFruitListFromApi);
+        });
 
-    it("should return an empty list if the input value does not match any fruit", () => {
-      render(
-        <HashRouter>
-          <FruitList fruitsList={mockFruitListFromApi} />
-        </HashRouter>
-      );
+        it("displays an error", async () => {
+          render(
+            <HashRouter>
+              <FruitListContainer />
+            </HashRouter>
+          );
 
-      const userInput = "e";
+          const userSearch = "test";
+          const input = screen.getByTestId("input");
+          const errorMessage = await screen.findByTestId("error-message");
+          let foundFruit;
 
-      const filteredFruits = mockFruitListFromApi.filter((fruit) => {
-        return fruit.name.toLowerCase().includes(userInput.toLowerCase());
+          // eslint-disable-next-line testing-library/no-unnecessary-act
+          act(() => {
+            userEvent.type(input, userSearch); //.type simulates user typing--needs 2 arguments (an element and a text)
+          });
+          await waitFor(() => {
+            foundFruit = screen.queryByTestId(userSearch);
+          });
+
+          //screen.debug();
+          expect(foundFruit).not.toBeInTheDocument();
+          expect(
+            screen.queryByTestId(
+              mockFruitListFromApi[0].name.toLocaleLowerCase()
+            )
+          ).not.toBeInTheDocument();
+          expect(errorMessage).toBeInTheDocument();
+        });
       });
-
-      expect(filteredFruits).toEqual([]);
     });
   });
 });
@@ -95,10 +102,22 @@ describe("FruitList section calls API services", () => {
     });
 
     it("renders FruitList section", async () => {
-      render(<FruitListContainer />);
+      render(
+        <HashRouter>
+          <FruitListContainer />
+        </HashRouter>
+      );
 
-      const list = screen.getByTestId("list-of-fruits");
-      expect(list).toBeInTheDocument();
+      const fruit0 = mockFruitListFromApi[0].name.toLowerCase();
+      const fruit1 = mockFruitListFromApi[1].name.toLowerCase();
+
+      // eslint-disable-next-line testing-library/no-unnecessary-act
+      await act(async () => {
+        screen.queryByTestId(fruit0);
+      });
+
+      expect(screen.getByTestId(fruit0)).toBeInTheDocument();
+      expect(screen.getByTestId(fruit1)).toBeInTheDocument();
     });
   });
 
@@ -107,7 +126,7 @@ describe("FruitList section calls API services", () => {
       jest.spyOn(myService, "getDataFromApi").mockResolvedValue([]);
     });
 
-    it("throws an error", async () => {
+    it("displays an error", async () => {
       render(<FruitListContainer />);
 
       const errorMessage = await screen.findByTestId("error-message");
