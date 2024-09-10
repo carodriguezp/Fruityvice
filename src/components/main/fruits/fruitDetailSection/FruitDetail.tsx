@@ -1,20 +1,24 @@
 import React from "react";
 import { StyledDetail, StyledTable } from "../../../../App.style";
+import { Fruit } from "../../../common.types";
 
-function FruitDetail() {
+function FruitDetail({ fruit }: { fruit: Fruit }) {
   return (
     <StyledDetail>
       <div>
-        <h1>NOMBRE DE LA FRUTA</h1>
+        <h1>{fruit.name}</h1>
 
         <h2>
-          <b>FAMILY: </b>FAMILIIIIIIIIIIIIIIIIA
+          <b>FAMILY: </b>
+          {fruit.family}
         </h2>
         <h2>
-          <b>ORDER: </b>ORDEEEEEEEEN
+          <b>ORDER: </b>
+          {fruit.order}
         </h2>
         <h2>
-          <b>GENUS: </b>GENEROOOOOOOOO
+          <b>GENUS: </b>
+          {fruit.genus}
         </h2>
       </div>
       <StyledTable className="table table-bordered">
@@ -24,23 +28,23 @@ function FruitDetail() {
         <tbody>
           <tr>
             <td>Calories</td>
-            <td>NUMEROOOOOOO</td>
+            <td>{fruit.nutritions.calories}</td>
           </tr>
           <tr>
             <td>Fat</td>
-            <td>NUMEROOOOOOO</td>
+            <td>{fruit.nutritions.fat}</td>
           </tr>
           <tr>
             <td>Sugar</td>
-            <td>NUMEROOOOOOO</td>
+            <td>{fruit.nutritions.sugar}</td>
           </tr>
           <tr>
             <td>Carbohydrates</td>
-            <td>NUMEROOOOOOO</td>
+            <td>{fruit.nutritions.carbohydrates}</td>
           </tr>
           <tr>
             <td>Protein</td>
-            <td>NUMEROOOOOOO</td>
+            <td>{fruit.nutritions.protein}</td>
           </tr>
         </tbody>
       </StyledTable>

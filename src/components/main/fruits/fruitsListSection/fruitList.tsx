@@ -17,7 +17,7 @@ function FruitList({ fruitsList }: { fruitsList: APIResponse }) {
             key={fruit.id}
             data-testid={fruit.name.toLowerCase()}
           >
-            <StyledLink to={routesPath.fruitsId} key={fruit.id}>
+            <StyledLink to={routesPath.fruitsId(fruit.id)} key={fruit.id}>
               <h2> {fruit.name} </h2>
             </StyledLink>
           </ListGroupItemStyled>
