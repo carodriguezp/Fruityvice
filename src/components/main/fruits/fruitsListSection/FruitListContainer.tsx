@@ -28,10 +28,10 @@ function FruitListContainer() {
 
   useEffect(() => {
     if (fruitsList) {
-      const x = fruitsList.filter((fruit) => {
+      const filteredResult = fruitsList.filter((fruit) => {
         return fruit.name.toLowerCase().includes(userInput.toLowerCase());
       });
-      setFilteredFruits(x);
+      setFilteredFruits(filteredResult);
     }
   }, [fruitsList, userInput]);
 
