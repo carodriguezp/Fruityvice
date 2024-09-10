@@ -1,19 +1,29 @@
-import React from "react";
+import FormControl from "react-bootstrap/FormControl";
+import FormLabel from "react-bootstrap/FormLabel";
+import { StyledForm, StyledFormGroup } from "../../../../../../App.style";
+import { useEffect, useState } from "react";
 
-function Filter() {
+function Filter(props: { handleFilterFruit: (x: string) => void }) {
+  const { handleFilterFruit } = props;
+
+  const [value, setValue] = useState("");
+  useEffect(() => {
+    handleFilterFruit(value);
+  }, [handleFilterFruit, value]);
+
   return (
-    <div>FILTER</div>
-    //     <Form inline>
-    //   <FormGroup controlId="formInlineName">
-    //     <ControlLabel>Name</ControlLabel>{' '}
-    //     <FormControl type="text" placeholder="Jane Doe" />
-    //   </FormGroup>{' '}
-    //   <FormGroup controlId="formInlineEmail">
-    //     <ControlLabel>Email</ControlLabel>{' '}
-    //     <FormControl type="email" placeholder="jane.doe@example.com" />
-    //   </FormGroup>{' '}
-    //   <Button type="submit">Send invitation</Button>
-    // </Form>;
+    <StyledForm>
+      <StyledFormGroup>
+        <FormLabel>Name</FormLabel>{" "}
+        <FormControl
+          data-testid="input"
+          type="text"
+          placeholder="Strawberry"
+          value={value}
+          onChange={(ev) => setValue(ev.target.value)}
+        />
+      </StyledFormGroup>{" "}
+    </StyledForm>
   );
 }
 

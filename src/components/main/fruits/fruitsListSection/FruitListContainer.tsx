@@ -5,6 +5,9 @@ import { APIResponse, getDataFromApi } from "../../../../services/api";
 
 function FruitListContainer() {
   const [fruitsList, setFruitsList] = useState<APIResponse>([]);
+  const [userInput, setUserInput] = useState("");
+
+  const [filteredFruits, setFilteredFruits] = useState<APIResponse>([]);
 
   const fetchFruits = async () => {
     try {
@@ -15,14 +18,27 @@ function FruitListContainer() {
     }
   };
 
+  const handleFilterFruit = (value: string) => {
+    setUserInput(value);
+  };
+
   useEffect(() => {
     fetchFruits();
   }, []);
 
+  useEffect(() => {
+    if (fruitsList) {
+      const filteredResult = fruitsList.filter((fruit) => {
+        return fruit.name.toLowerCase().includes(userInput.toLowerCase());
+      });
+      setFilteredFruits(filteredResult);
+    }
+  }, [fruitsList, userInput]);
+
   return (
     <>
-      <Filter />
-      <FruitList fruitsList={fruitsList} />
+      <Filter handleFilterFruit={handleFilterFruit} />
+      <FruitList fruitsList={filteredFruits} />
     </>
   );
 }

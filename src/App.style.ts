@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import image from './pattern.png'
 import { Link } from "react-router-dom";
-import { ListGroupItem } from 'react-bootstrap';
+import { Form, FormGroup, ListGroupItem } from 'react-bootstrap';
 
 const fontColor = "#337AB7";
 
@@ -17,7 +17,7 @@ export const Container = styled.div`
   color: white;
   
   .header {
-    top: 10px;
+   top:0;
     position: absolute;  
 }
 `;
@@ -83,8 +83,33 @@ export const ListGroupItemStyled = styled(ListGroupItem)`
 `
 
 export const StyledLink = styled(Link)`
-text-decoration: none;
+ text-decoration: none;
 &:hover {
-        text-decoration: none;
+    text-decoration: none;
 }
 `
+
+export const StyledForm = styled(Form)`
+    position: relative;
+    top: 98px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 10px;
+    background: rgba(193, 5, 129, 0.50);
+    
+    @media all and (min-width: 768px) {
+      top: 155px;
+      width: 90vw;
+      flex-direction: row;
+      justify-content: center;
+  } 
+`
+
+export const StyledFormGroup = styled(FormGroup)`
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    color: white;
+`
+
