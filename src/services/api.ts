@@ -28,8 +28,6 @@ const getDataByIdFromApi = async (id: number) => {
     try {
         const response = await axios.get<Fruit>(fruitByIdURL(id)); //As the expected answer is Fruit Type
 
-        if (!response) { return null }
-
         return response.data; //When we analyze Api response in console, we can see that its response is inside "data" property
 
     } catch (error) {
