@@ -3,8 +3,10 @@ import image from './pattern.png'
 import { Link } from "react-router-dom";
 import { Form, FormGroup, ListGroupItem } from 'react-bootstrap';
 
-const fontColorBlue = "#337AB7";
-const fontColorOrange = "#ed4444c2"
+const fontColorBlue = "rgba(51, 122, 183, 1)";
+const fontColorOrange = "rgba(237, 68, 68, 0.76)";
+const colorBackground = "rgba(219, 212, 60, 0.76)";
+const yellowBackground = "rgba(255, 251, 214, 1)"
 
 export const Container = styled.div`
 
@@ -68,7 +70,7 @@ export const ListGroupItemStyled = styled(ListGroupItem)`
     }
 
      &:hover{
-      background: #fffbd6
+      background: ${yellowBackground};
     } 
 
     h2{
@@ -121,7 +123,7 @@ export const StyledDetail = styled.div`
     align-items: center;
     gap: 20px;
     padding: 10px;
-    background: rgba(219, 212, 60, 0.76);
+    background: ${colorBackground};
     
 
 b{
@@ -157,13 +159,11 @@ b{
   @media all and (min-width: 1024px) {
     width: 80vw;
     h1{
-      font-size: 3rem;
-      
+      font-size: 3rem;   
     }
 
     h2{
       font-size: 2rem;
-      
     }
   } 
 `
